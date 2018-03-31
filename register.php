@@ -1,3 +1,14 @@
+<?php
+    include("includes/classes/Account.php");
+
+    $account = new Account();
+    
+    include("includes/handlers/register-handler.php");
+    include("includes/handlers/login-handler.php");
+    
+?>
+
+
 <html lang="en">
 <head>
     <title>Welcome to Slotify!</title>
@@ -18,11 +29,11 @@
             <button type="submit" name="loginButton">LOG IN</button>
             
         </form>
-    </div>
 
-    <form action="register.php" id="registerForm" method="POST">
+        <form action="register.php" id="registerForm" method="POST">
             <h2>Create your free account</h2>
             <p>
+                <?php echo $account->getError("Your username must be between 5 and 25 characters"); ?>
                 <label for="username">Username</label>
                 <input id="username" name="username" type="text" placeholder="username" required>
             </p>
